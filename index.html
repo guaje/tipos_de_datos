@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Tipos de datos</title>
+
+		<meta name="description" content="Data Types">
+		<meta name="author" content="Javier Guaje">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/dark-blue.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                
+<section data-markdown>
+	# Tipos de Datos
+	#####Javier Guaje
+</section>
+<section>
+	<section data-markdown>
+		# Primitivos
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Tipos de datos: Primitivos
+
+		- Enteros: int*
+		- <!-- .element: class="fragment" -->
+		Reales: double y float*
+		- <!-- .element: class="fragment" -->
+		Caracteres: char*
+		- <!-- .element: class="fragment" -->
+		Valores de verdad: bool*
+
+		<!-- .element: class="fragment" -->
+		Estos tipos de datos son conocidos como __primitivos__ pues están definidos en la mayoría de los lenguajes de programación y porque de ellos se pueden derivar otros tipos de datos definidos por el programador.
+
+		<!-- .element: class="fragment" -->
+		* Estas palabras reservadas están definidas en lenguajes como C++.
+		</script>
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Enteros
+	</section>
+
+	<section>
+		<h2>Enteros: Declaración</h2>
+
+		<p>
+			Si \(x\) es una variable algebraica que varía en el conjunto \(\mathbb{Z}\), para definir \(x\) se utiliza la expresión:
+			<br>
+			<br>
+			int x;
+		</p>
+
+		<p class="fragment">
+			lo que sirve para declarar que la variable \(x\) pertenece a los enteros que son representables en un lenguaje de programación de tipado fuerte.
+		</p>
+	</section>
+
+	<section>
+		<h2>Enteros: Conjunto</h2>
+
+		<p>
+			El subconjunto de los números enteros que pueden ser representados en la mayoría de lenguajes de programación, es el conjunto de enteros con signo que se representan con 32 bits (4 bytes) y que usan un tipo de codificación interna llamada <b>complemento a 2</b>, los valores de este conjunto varían en el rango:
+			<br>
+			<br>
+			$$-2147483648 \leq x \leq 2147483647$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Enteros: Literales</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="4" style="text-align:center">Literales enteros</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:right">
+						-32768 <br> 32768 <br> +32768
+					</td>
+					<td style="text-align:right">
+						-0 <br> 0 <br> +0
+					</td>
+					<td style="text-align:right">
+						-1 <br> 1 <br> +1
+					</td>
+					<td style="text-align:right">
+						-127 <br> 127 <br> +127
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p class="fragment">
+			<b>Literales enteros</b>: Sintaxis de los valores que pueden ser asignados a las variables de tipo <b>int</b>.
+		</p>
+	</section>
+
+	<section>
+		<h2>Enteros: Subtipos</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th style="text-align:center">Subtipo</th>
+					<th style="text-align:center">Bits</th>
+					<th style="text-align:center">Rango</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>short</td>
+					<td>16</td>
+					<td>\(-32768 \leq x \leq 32767\)</td>
+				</tr>
+				<tr class="fragment">
+					<td>long</td>
+					<td>32</td>
+					<td>\(-2147483648 \leq x \leq 2147483647\)</td>
+				</tr>
+				<tr class="fragment">
+					<td>unsigned int</td>
+					<td>32</td>
+					<td>\(0 \leq x \leq 4294967295\)</td>
+				</tr>
+				<tr class="fragment">
+					<td>unsigned short</td>
+					<td>16</td>
+					<td>\(0 \leq x \leq 65535\)</td>
+				</tr>
+				<tr class="fragment">
+					<td>unsigned long</td>
+					<td>32</td>
+					<td>\(0 \leq x \leq 4294967295\)</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Enteros en C++: Recomendaciones
+		
+		En C++ cuando se declara una variable de tipo entero, no se sabe que valor tiene, por eso es necesario inicializar la variable.
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	int jackpot = 777;
+	int sentidoDeLaVidaElUniversoYTodoLoDemas = 42;
+
+    return 0;
+}
+```
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Reales
+	</section>
+
+	<section>
+		<h2>Reales: Declaración</h2>
+
+		<p>
+			Si \(x\) y \(y\) son variables algebraicas que varían en el conjunto \(\mathbb{R}\), para definir \(x\) y \(y\) se utilizan las expresiones:
+			<br>
+			<br>
+			float x;
+			<br>
+			double y;
+		</p>
+
+		<p class="fragment">
+			lo que sirve para declarar que las variables \(x\) y \(y\) pertenecen a los reales que son representables en un lenguaje de programación de tipado fuerte.
+		</p>
+	</section>
+
+	<section>
+		<h2>Reales: Conjunto</h2>
+
+		<p>
+			El subconjunto de los números reales que pueden ser representados en la mayoría de lenguajes de programación, es un subconjunto propio de los racionales, que se representan con 32 bits (4 bytes) (float) y 64 bits (8 bytes) (double) y que usan un tipo de codificación definida por el <i>IEEE standard for Binary Floating-Point Arithmetic 754 de 1985</i>, los valores distintos de 0 de este conjunto varían en el rango:
+			$$1.18 \times 10^{-38} \leq x \leq 3.40 \times 10^{38}$$
+			con precisión científica de 7 dígitos y
+			$$2.23 \times 10^{-308} \leq y \leq 1.79 \times 10^{308}$$
+			con precisión científica de 15 dígitos.
+		</p>
+	</section>
+
+	<section>
+		<h2>Reales: Densidad</h2>
+
+		<p>
+			$$\{ -6, -4, -3, -2, - \frac{3}{2}, -1, - \frac{3}{4}, - \frac{1}{2}, - \frac{3}{8}, - \frac{1}{4}, $$
+			$$0, $$
+			$$\frac{1}{4}, \frac{3}{8}, \frac{1}{2}, \frac{3}{4}, 1, \frac{3}{2}, 2, 3, 4, 6 \}$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Reales: Densidad
+
+		Los números reales son densos en ellos mismos, es decir, que dados dos reales distintos siempre se puede encontrar uno distinto que se encuentre entre ellos dos.
+
+		<!-- .element: class="fragment" -->
+		Los números reales de máquina no son densos, esto sucede por que los números reales de máquina son finitos y por lo tanto, existen números distintos para los cuales no hay números entre ellos. Además, la mayoría de los números se acumulan alrededor del 0 y hacia los extremos superior e inferior se encuentran más dispersos.
+		</script>
+	</section>
+
+	<section>
+		<h2>Reales: Literales</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="4" style="text-align:center">Literales reales</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:right">
+						-3.14159265 <br> 3.14159265 <br> +3.14159265
+					</td>
+					<td style="text-align:right">
+						-0.0 <br> 0.0 <br> +0.0
+					</td>
+					<td style="text-align:right">
+						\(-6.02214129 \times 10^{23}\) <br> \(6.02214129 \times 10^{23}\) <br> \(+6.02214129 \times 10^{23}\)
+					</td>
+					<td style="text-align:right">
+						\(6.02214129 \times 10^{-23}\) <br> \(6.02214129 \times 10^{23}\) <br> \(6.02214129 \times 10^{+23}\)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p class="fragment">
+			<b>Literales reales</b>: Sintaxis de los valores que pueden ser asignados a las variables de tipo <b>float</b> o <b>double</b>.
+		</p>
+	</section>
+
+	<section>
+		<h2>Reales: Subtipos</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th style="text-align:center">Subtipo</th>
+					<th style="text-align:center">Bits</th>
+					<th style="text-align:center">Rango</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>long double</td>
+					<td>80</td>
+					<td>\(3.37 \times 10^{-4932} \leq y \leq 1.18 \times 10^{4932}\)</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Reales en C++: Recomendaciones
+		
+		En C++ cuando se declara una variable de tipo real (float o double), no se sabe que valor tiene, por eso es necesario inicializar la variable.
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	float pi = 3.1416;
+	float aureo = 1.6180;
+	double e = 2.71828183;
+	double luz = 2.998e8;
+
+    return 0;
+}
+```
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Caracteres
+	</section>
+
+	<section>
+		<h2>Caracteres: Declaración</h2>
+
+		<p>
+			Si \(x\) es una variable algebraica que varía en el conjunto \(\mathbb{ASCII}\), para definir \(x\) se utiliza la expresión:
+			<br>
+			<br>
+			char x;
+		</p>
+
+		<p class="fragment">
+			lo que sirve para declarar que la variable \(x\) pertenece al conjunto de los \(\mathbb{ASCII}\).
+		</p>
+	</section>
+
+	<section>
+		<h2>Caracteres: Conjunto</h2>
+
+		<p>
+			Los caracteres representan los símbolos definidos por el ASCII (<i>American Standard Code for Information Interchange</i>). Los caracteres se representan con 8 bits (1 byte), lo que ofrece 256 símbolos distintos. El conjunto \(\mathbb{ASCII}\) cumple con la siguiente característica:
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Caracteres: Conjunto
+
+		![Alt text](http://people.revoledu.com/kardi/resources/Converter/Image/ASCII.jpg)
+	</section>
+
+	<section>
+		<h2>Caracteres: Reservados</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="6" style="text-align:center">Caracteres especiales de C++</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">\n</td>
+					<td style="text-align:center">Nueva línea</td>
+					<td style="text-align:center">\'</td>
+					<td style="text-align:center">Apóstrofo</td>
+					<td style="text-align:center">\v</td>
+					<td style="text-align:center">Tabulador vertical</td>
+				</tr>
+				<tr>
+					<td style="text-align:center">\t</td>
+					<td style="text-align:center">Tabulador horizontal</td>
+					<td style="text-align:center">\"</td>
+					<td style="text-align:center">Comillas</td>
+					<td style="text-align:center">\r</td>
+					<td style="text-align:center">Retorno de carro</td>
+				</tr>
+				<tr>
+					<td style="text-align:center">\\</td>
+					<td style="text-align:center">Backslash</td>
+					<td style="text-align:center">\b</td>
+					<td style="text-align:center">Retroceso</td>
+					<td style="text-align:center">\?</td>
+					<td style="text-align:center">Interrogación</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>Caracteres: Reservados</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="4" style="text-align:center">Caracteres especiales de Python</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">\n</td>
+					<td style="text-align:center">Nueva línea</td>
+					<td style="text-align:center">\"</td>
+					<td style="text-align:center">Comillas</td>
+				</tr>
+				<tr>
+					<td style="text-align:center">\t</td>
+					<td style="text-align:center">Tabulador horizontal</td>
+					<td style="text-align:center">\b</td>
+					<td style="text-align:center">Retroceso</td>
+				</tr>
+				<tr>
+					<td style="text-align:center">\\</td>
+					<td style="text-align:center">Backslash</td>
+					<td style="text-align:center">\v</td>
+					<td style="text-align:center">Tabulador vertical</td>
+				</tr>
+				<tr>
+					<td style="text-align:center">\'</td>
+					<td style="text-align:center">Apóstrofo</td>
+					<td style="text-align:center">\r</td>
+					<td style="text-align:center">Retorno de carro</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Caracteres en C++: Recomendaciones
+		
+		En C++ cuando se declara una variable de tipo caracter, no se sabe que valor tiene, por eso es necesario inicializar la variable.
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	char whitespace = ' ';
+	char cero = 48;
+	char endLine = '\n';
+
+    return 0;
+}
+```
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Booleanos
+	</section>
+
+	<section>
+		<h2>Booleanos: Declaración</h2>
+
+		<p>
+			Si \(x\) es una variable algebraica que varía en el conjunto \(\mathbb{B}\), para definir \(x\) se utiliza la expresión:
+			<br>
+			<br>
+			bool x;
+		</p>
+
+		<p class="fragment">
+			lo que sirve para declarar que la variable \(x\) pertenece al conjunto de los booleanos (\(\mathbb{B} = \{V, F\}\)) que son representables en un lenguaje de programación.
+		</p>
+	</section>
+
+	<section>
+		<h2>Booleanos: Conjunto</h2>
+
+		<p>
+			La representación interna de los valores booleanos se hace mediante el uso de valores enteros int de 32 bits de la siguiente manera: el valor lógico \(F\) se representa con el entero 0 (cero) y el valor lógico \(V\) se representa con cualquier entero distinto de 0, por costumbre se usa el entero 1 (uno). De lo anterior se obtienen las siguientes equivalencias lógicas:
+			$$ F \Leftrightarrow 0$$
+			y
+			$$V \Leftrightarrow \{x : (x \in \mathbb{Z}) \land (x \neq 0)\}$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Booleanos: Literales</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th style="text-align:center">Lenguaje</th>
+					<th colspan="2" style="text-align:center">Literales booleanos</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">
+						C++ <br> Python
+					</td>
+					<td style="text-align:center">
+						true <br> True
+					</td>
+					<td style="text-align:center">
+						false <br> False
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p class="fragment">
+			<b>Literales booleanos</b>: Como sólo hay dos valores de verdad V y F, sólo hay dos literales para representar los valores lógicos.
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Booleanos en C++: Recomendaciones
+		
+		En C++ cuando se declara una variable de tipo booleano, no se sabe que valor tiene, por eso es necesario inicializar la variable.
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	bool top = true;
+	bool bottom = false;
+
+	bool black = 0;
+	bool white = 1;
+
+    return 0;
+}
+```
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Typecasting
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Definición
+
+		Es una forma de convertir una variable de un tipo de dato a otro.
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Entero a real
+
+		El dato entero se convierte (se promueve) a un dato de tipo real de forma automática, simplemente agregándole la parte decimal ".0".
+	</section>
+
+	<section>
+		<h2>Typecasting: Entero a real</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th style="text-align:center">Operaciones equivalentes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">-2 + 1.0 \(\Leftrightarrow\) -2.0 + 1.0</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">7.2 - 6 \(\Leftrightarrow\) 7.2 - 6.0</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">0.0 * 5 \(\Leftrightarrow\) 0.0 * 5.0</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">4 / 2.0 \(\Leftrightarrow\) 4.0 / 2.0</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Entero a caracter
+
+		El dato entero se convierte (se promueve) a un dato de tipo caracter de forma automática, de acuerdo al conjunto que define los caracteres. Los cuales están definidos por el ASCII (_American Standard Code for Information Interchange_).
+	</section>
+
+	<section>
+		<h2>Typecasting: Entero a caracter</h2>
+
+		<p>
+			Si se desea convertir el valor de un dato o una variable de tipo entero de forma directa, sin necesidad de asignarlo a una variable, se pueden utilizar las instrucciones:
+		</p>
+
+		<table class="fragment">
+			<thead>
+				<tr>
+					<th colspan="4" style="text-align:center">Typecasting</th>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">C++</th>
+					<th colspan="2" style="text-align:center">Python</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">(char)valor;</td>
+					<td style="text-align:center">(char)80;</td>
+					<td style="text-align:center">chr(valor)</td>
+					<td style="text-align:center">chr(80)</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">(char)variable;</td>
+					<td style="text-align:center">(char)slash;</td>
+					<td style="text-align:center">chr(variable)</td>
+					<td style="text-align:center">chr(slash)</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Entero a caracter
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	int a = 97;
+	int A = 65;
+	cout << (char)a << endl;
+	cout << (char)A << endl;
+	cout << (char)100 << endl;
+	cout << (char)70 << endl;
+
+	return 0;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Entero a caracter
+
+```python
+a = 97
+A = 65
+print (chr(a))
+print (chr(A))
+print (chr(100))
+print (chr(70))
+```
+	</section>
+
+	<section>
+		<h2>Typecasting: Entero a booleano</h2>
+
+		<p>
+			El dato entero se convierte (se promueve) a un dato de tipo booleano de forma automática, de acuerdo al conjunto que define los booleanos. Según el cual el valor lógico \(F\) se representa con el entero 0 (cero) y el valor lógico \(V\) se representa con cualquier entero distinto de 0. Es decir:
+			$$ F \Leftrightarrow 0$$
+			y
+			$$V \Leftrightarrow \{x : (x \in \mathbb{Z}) \land (x \neq 0)\}$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Typecasting: Entero a booleano</h2>
+
+		<p>
+			Si se desea convertir el valor de un dato o una variable de tipo entero de forma directa, sin necesidad de asignarlo a una variable, se pueden utilizar las instrucciones:
+		</p>
+
+		<table class="fragment">
+			<thead>
+				<tr>
+					<th colspan="4" style="text-align:center">Typecasting</th>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">C++</th>
+					<th colspan="2" style="text-align:center">Python</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">(bool)valor;</td>
+					<td style="text-align:center">(bool)0;</td>
+					<td style="text-align:center">bool(valor)</td>
+					<td style="text-align:center">bool(0)</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">(bool)variable;</td>
+					<td style="text-align:center">(bool)blanco;</td>
+					<td style="text-align:center">bool(variable)</td>
+					<td style="text-align:center">bool(blanco)</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Entero a booleano
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	int f = 0;
+	int v = -1;
+	cout << (bool)f << endl;
+	cout << (bool)v << endl;
+	cout << (bool)0 << endl;
+	cout << (bool)13 << endl;
+
+	return 0;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Entero a booleano
+
+```python
+f = 0
+v = -1
+print (bool(f))
+print (bool(v))
+print (bool(0))
+print (bool(13))
+```
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Typecasting: Real a entero
+
+		El dato real se convierte (se promueve) a un dato de tipo entero de forma automática, simplemente eliminando la parte decimal del real y dejando la parte entera.
+		</script>
+	</section>
+
+	<section>
+		<h2>Typecasting: Real a entero</h2>
+
+		<p>
+			Si se desea convertir el valor de un dato o una variable de tipo real de forma directa, sin necesidad de asignarlo a una variable, se pueden utilizar las instrucciones:
+		</p>
+
+		<table class="fragment">
+			<thead>
+				<tr>
+					<th colspan="4" style="text-align:center">Typecasting</th>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align:center">C++</th>
+					<th colspan="2" style="text-align:center">Python</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">(int)valor;</td>
+					<td style="text-align:center">(int)1.5;</td>
+					<td style="text-align:center">int(valor)</td>
+					<td style="text-align:center">int(1.5)</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">(int)variable;</td>
+					<td style="text-align:center">(int)pi;</td>
+					<td style="text-align:center">int(variable)</td>
+					<td style="text-align:center">int(pi)</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Real a Entero
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	float x = 1.3;
+	double y = 5.7;
+	cout << (int)x << endl;
+	cout << (int)y << endl;
+	cout << (int)-3.4 << endl;
+	cout << (int)12.6 << endl;
+
+	return 0;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Typecasting: Real a Entero
+
+```python
+x = 1.3
+y = 5.7
+print (int(x))
+print (int(y))
+print (int(-3.4))
+print (int(12.6))
+```
+	</section>
+
+	<section>
+		<h2>Typecasting: Real a entero</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th style="text-align:center">Operaciones equivalentes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align:center">2 * (int)2.5 \(\Leftrightarrow\) 2 * 2</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">(int)-3.14 + (int)5.5 \(\Leftrightarrow\) -3 + 5</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">(int)0.0 / 5 \(\Leftrightarrow\) 0 / 5</td>
+				</tr>
+				<tr class="fragment">
+					<td style="text-align:center">(int)4.8 - (int)2.3 \(\Leftrightarrow\) 4 - 2</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</section>
+<section data-markdown>
+	# Compuestos
+</section>
+<section>
+	<section data-markdown>
+		## Cadenas de caracteres
+	</section>
+
+	<section data-markdown>
+		## Cadenas de caracteres: Ejemplos C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	char oscar[] = "Oscar";
+	char lina[] = {'L', 'i', 'n', 'a', '\0'};
+
+    return 0;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Cadenas de caracteres: Ejemplos Python
+
+```python
+oscar = "Oscar"
+lina = "Lina"
+```
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Cadenas de caracteres: Consideraciones
+
+		Las cadenas de caracteres o __Strings__ son, de manera sencilla, arreglos de caracteres.
+
+		<!-- .element: class="fragment" -->
+		En C++ toda cadena de caracteres debe terminar con el caracter __NULL__ ('\0').
+		</script>
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Colores
+	</section>
+
+	<section data-markdown>
+		## Colores: Representación RGB o BGR
+
+		![Alt text](http://www.xaraxone.com/webxealot/workbook40/color_02.gif)
+	</section>
+
+	<section data-markdown>
+		## Colores: Representación CMYK
+
+		![Alt text](http://www.xaraxone.com/webxealot/workbook35/rgb-cymk_05.gif)
+	</section>
+
+	<section data-markdown>
+		## Colores: Representación HSV
+
+		![Alt text](http://doc.qt.digia.com/qq/qq26-hsv-space.png)
+	</section>
+</section>
+<section>
+	<section data-markdown>
+		## Fechas
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Fechas: Consideraciones
+
+		Las librerias para representar fechas estan basadas en el __Calendario Gregoriano__. Este calendario fué usado por primera vez en 1582 con el proposito de arreglar un error existente en el __Calendario Juliano__.
+
+		<!-- .element: class="fragment" -->
+		Acualmente se usa una versión reducida del calendario gregoriano que soporta fechas desde 01/01/1400 hasta 31/12/9999.
+		</script>
+	</section>
+</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: false,
+
+				// Display the page number of the current slide
+				slideNumber: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enable the slide overview mode
+				overview: true,
+
+				// Vertical centering of slides
+				center: true,
+
+				// Enables touch navigation on devices with touch input
+				touch: true,
+
+				// Loop the presentation
+				loop: false,
+
+				// Change the presentation direction to be RTL
+				rtl: false,
+
+				// Turns fragments on and off globally
+				fragments: true,
+
+				// Flags if the presentation is running in an embedded mode,
+				// i.e. contained within a limited portion of the screen
+				embedded: false,
+
+				// Flags if we should show a help overlay when the questionmark
+				// key is pressed
+				help: true,
+
+				// Number of milliseconds between automatically proceeding to the
+				// next slide, disabled when set to 0, this value can be overwritten
+				// by using a data-autoslide attribute on your slides
+				autoSlide: 0,
+
+				// Stop auto-sliding after user input
+				autoSlideStoppable: true,
+
+				// Enable slide navigation via mouse wheel
+				mouseWheel: false,
+
+				// Hides the address bar on mobile devices
+				hideAddressBar: true,
+
+				// Opens links in an iframe preview overlay
+				previewLinks: false,
+
+				// Transition style
+				transition: 'slide', // default/none/fade/slide/convex/concave/zoom
+
+				// Transition speed
+				transitionSpeed: 'default', // default/fast/slow
+
+				// Transition style for full page slide backgrounds
+				backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+				// Number of slides away from the current that are visible
+				viewDistance: 3,
+
+				// Parallax background image
+				parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+				// Parallax background size
+				parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+				// Optional reveal.js plugins
+				dependencies: [
+				// Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+				// Interpret Markdown in <section> elements
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+				// Syntax highlight for <code> elements
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+				// Zoom in and out with Alt+click
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+
+				// Speaker notes
+				{ src: 'plugin/notes/notes.js', async: true },
+
+				// Remote control your reveal.js presentation using a touch device
+				{ src: 'plugin/remotes/remotes.js', async: true },
+
+				// MathJax
+				{ src: 'plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
